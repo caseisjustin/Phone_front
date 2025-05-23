@@ -1,6 +1,5 @@
 import MainLayout from "../layouts/MainLayout"
 import Sidebar from "../components/Sidebar"
-import ProtectedRoutes from "../components/ProtectedRoutes"
 import ProfileSettings from "../components/ProfileSettings"
 import RoomList from "../components/RoomList"
 import { Flex } from "@mantine/core"
@@ -16,13 +15,11 @@ function Home() {
       >
         <ProfileSettings />
         <Sidebar />
-        <ProtectedRoutes>
           <AddChatroom />
           <Flex direction={{ base: "column", md: "row" }}>
             <RoomList />
             <JoinRoomOrChatwindow />
           </Flex>
-        </ProtectedRoutes>
       </div>
     </MainLayout>
   )

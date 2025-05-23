@@ -57,7 +57,7 @@ const MessageBubble: React.FC<MessageProps> = ({ message, currentUserId }) => {
               width={"250"}
               height={"250"}
               fit="cover"
-              src={"http://localhost:3001/" + message.imageUrl}
+              src={"http://10.10.1.91:3001/" + message.imageUrl}
               alt="Uploaded content"
             />
           )}

@@ -19,7 +19,6 @@ import {
   IconLogin,
 } from "@tabler/icons-react"
 import { useMutation } from "@apollo/client"
-import { LOGOUT_USER } from "../graphql/mutations/Logout"
 
 const useStyles = createStyles((theme) => {
   return {
@@ -118,7 +117,7 @@ function Sidebar() {
           {userId && (
             <NavbarLink
               icon={IconUser}
-              label={"Profile(" + user.first_name + user.last_name + ")"}
+              label={"Profile(" + user.first_name + ")"}
               onClick={toggleProfileSettingsModal}
             />
           )}
