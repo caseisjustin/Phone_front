@@ -22,9 +22,9 @@ function ProfileSettings() {
   const toggleProfileSettingsModal = useGeneralStore(
     (state) => state.toggleProfileSettingsModal
   )
-  const profileImage = useUserStore((state) => state.avatarUrl)
+  const profileImage = useUserStore((state) => state.profile_img)
   const updateProfileImage = useUserStore((state) => state.updateProfileImage)
-  const fullname = useUserStore((state) => state.fullname)
+  const first_name = useUserStore((state) => state.first_name)
   const updateUsername = useUserStore((state) => state.updateUsername)
   const [imageFile, setImageFile] = useState<File | null>(null)
   const imagePreview = imageFile ? URL.createObjectURL(imageFile) : null
@@ -33,11 +33,11 @@ function ProfileSettings() {
 
   const form = useForm({
     initialValues: {
-      fullname: fullname,
+      first_name: first_name,
       profileImage: profileImage,
     },
     validate: {
-      fullname: (value: string) =>
+      first_name: (value: string) =>
         value.trim().length >= 3
           ? null
           : "Username must be at least 3 characters",
@@ -46,14 +46,14 @@ function ProfileSettings() {
 
   const [updateProfile] = useMutation(UPDATE_PROFILE, {
     variables: {
-      fullname: form.values.fullname,
+      first_name: form.values.first_name,
       file: imageFile,
     },
     // run liveUsersInChatroom subscription after mutation is completed
 
     onCompleted: (data) => {
-      updateProfileImage(data.updateProfile.avatarUrl)
-      updateUsername(data.updateProfile.fullname)
+      updateProfileImage(data.updateProfile.profile_img)
+      updateUsername(data.updateProfile.first_name)
     },
   })
   const handleSave = async () => {
@@ -108,11 +108,11 @@ function ProfileSettings() {
         <TextInput
           style={{ marginTop: 20 }}
           label="Username"
-          {...form.getInputProps("fullname")}
+          {...form.getInputProps("first_name")}
           onChange={(event) => {
-            form.setFieldValue("fullname", event.currentTarget.value)
+            form.setFieldValue("first_name", event.currentTarget.value)
           }}
-          error={form.errors.fullname}
+          error={form.errors.first_name}
         />
         <Flex gap="md" mt="sm">
           <Button onClick={handleSave}>Save</Button>

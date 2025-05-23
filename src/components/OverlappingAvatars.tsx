@@ -5,7 +5,7 @@ import { Avatar, Tooltip } from "@mantine/core"
 function OverlappingAvatars({ users }: { users: User[] }) {
   const remainingUsers = users.length > 3 ? users.slice(3) : []
 
-  const remainingNames = remainingUsers.map((user) => user.fullname).join(", ")
+  const remainingNames = remainingUsers.map((user) => user.first_name).join(", ")
 
   return (
     <Tooltip.Group openDelay={300} closeDelay={100}>
@@ -13,11 +13,11 @@ function OverlappingAvatars({ users }: { users: User[] }) {
         <>
           {users.slice(0, 3).map((user) => {
             return (
-              <Tooltip key={user.id} label={user.fullname}>
+              <Tooltip key={user.id} label={user.first_name}>
                 <Avatar
-                  src={user.avatarUrl || null}
+                  src={user.profile_img || null}
                   radius="xl"
-                  alt={user.fullname}
+                  alt={user.first_name}
                   size="lg"
                 />
               </Tooltip>

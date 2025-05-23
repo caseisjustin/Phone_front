@@ -29,15 +29,15 @@ const MessageBubble: React.FC<MessageProps> = ({ message, currentUserId }) => {
       {!isSentByCurrentUser && (
         <Avatar
           radius={"xl"}
-          src={message.user.avatarUrl || null}
-          alt={message.user.fullname}
+          src={message.user.profile_img || null}
+          alt={message.user.first_name}
         />
       )}
       <Flex direction={"column"} justify={"center"} align={"center"}>
         {isSentByCurrentUser ? (
           <span>Me</span>
         ) : (
-          <span>{message.user.fullname}</span>
+          <span>{message.user.first_name}</span>
         )}
         <Paper
           p="md"
@@ -75,8 +75,8 @@ const MessageBubble: React.FC<MessageProps> = ({ message, currentUserId }) => {
         <Avatar
           mr={"md"}
           radius={"xl"}
-          src={message.user.avatarUrl || null}
-          alt={message.user.fullname}
+          src={message.user.profile_img || null}
+          alt={message.user.first_name}
         />
       )}
     </Flex>

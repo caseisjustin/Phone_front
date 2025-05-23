@@ -79,7 +79,7 @@ function AddChatroom() {
   }
   const [searchTerm, setSearchTerm] = useState("")
   const { data, refetch } = useQuery<SearchUsersQuery>(SEARCH_USERS, {
-    variables: { fullname: searchTerm },
+    variables: { first_name: searchTerm },
   })
   const [addUsersToChatroom, { loading: loadingAddUsers }] =
     useMutation<AddUsersToChatroomMutation>(ADD_USERS_TO_CHATROOM, {
@@ -127,7 +127,7 @@ function AddChatroom() {
   }
   const selectItems: SelectItem[] =
     data?.searchUsers?.map((user) => ({
-      label: user.fullname,
+      label: user.first_name,
       value: String(user.id),
     })) || []
 

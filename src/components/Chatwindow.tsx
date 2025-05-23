@@ -354,7 +354,7 @@ function Chatwindow() {
                         <Avatar
                           radius={"xl"}
                           size={25}
-                          src={user.avatarUrl ? user.avatarUrl : null}
+                          src={user.profile_img ? user.profile_img : null}
                         />
 
                         <Flex
@@ -366,7 +366,7 @@ function Chatwindow() {
                           bg="green"
                           style={{ borderRadius: 10 }}
                         ></Flex>
-                        <Text ml={"sm"}>{user.fullname}</Text>
+                        <Text ml={"sm"}>{user.first_name}</Text>
                       </Flex>
                     ))}
                   </List>
@@ -435,10 +435,10 @@ function Chatwindow() {
                 >
                   <Avatar.Group>
                     {typingUsers.map((user) => (
-                      <Tooltip key={user.id} label={user.fullname}>
+                      <Tooltip key={user.id} label={user.first_name}>
                         <Avatar
                           radius={"xl"}
-                          src={user.avatarUrl ? user.avatarUrl : null}
+                          src={user.profile_img ? user.profile_img : null}
                         />
                       </Tooltip>
                     ))}

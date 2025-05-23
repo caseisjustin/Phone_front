@@ -48,7 +48,7 @@ const wsLink = new WebSocketLink({
   },
 })
 const errorLink = onError(({ graphQLErrors, operation, forward }) => {
-  for (const err of graphQLErrors) {
+  for (const err of graphQLErrors!) {
     if (err.extensions.code === "UNAUTHENTICATED" && retryCount < maxRetry) {
       retryCount++
       return new Observable((observer) => {
@@ -72,8 +72,8 @@ const errorLink = onError(({ graphQLErrors, operation, forward }) => {
       console.log("refresh token not found!")
       useUserStore.setState({
         id: undefined,
-        fullname: "",
-        email: "",
+        first_name: "",
+        phone_number: "",
       })
     }
   }
