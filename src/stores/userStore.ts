@@ -6,7 +6,6 @@ interface UserState {
   id: number | undefined
   profile_img: string | null
   first_name: string
-  phone_number?: string
   updateProfileImage: (image: string) => void
   updateUsername: (name: string) => void
   setUser: (user: User) => void
@@ -17,7 +16,6 @@ export const useUserStore = create<UserState>()(
     (set) => ({
       id: undefined,
       first_name: "",
-      phone_number: "",
       profile_img: null,
 
       updateProfileImage: (image: string) => set({ profile_img: image }),
@@ -27,7 +25,6 @@ export const useUserStore = create<UserState>()(
           id: user.id || undefined,
           profile_img: user.profile_img,
           first_name: user.first_name,
-          phone_number: user.phone_number,
         }),
     }),
     {

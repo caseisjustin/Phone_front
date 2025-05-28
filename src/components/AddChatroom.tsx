@@ -44,8 +44,7 @@ function AddChatroom() {
     setHighestStepVisited((hSC) => Math.max(hSC, nextStep))
   }
 
-  const [createChatroom, { loading }] =
-    useMutation<CreateChatroomMutation>(CREATE_CHATROOM)
+  const [createChatroom, { loading }] = useMutation<CreateChatroomMutation>(CREATE_CHATROOM)
 
   const form = useForm({
     initialValues: {
@@ -65,7 +64,6 @@ function AddChatroom() {
         name: form.values.name,
       },
       onCompleted: (data) => {
-        console.log(data)
         setNewlyCreatedChatroom(data.createChatroom)
         handleStepChange(active + 1)
       },
@@ -77,8 +75,8 @@ function AddChatroom() {
       refetchQueries: ["GetChatroomsForUser"],
     })
   }
-  const [searchTerm, setSearchTerm] = useState("")
-  const { data, refetch } = useQuery<SearchUsersQuery>(SEARCH_USERS, {
+  const [searchTerm, setSearchTerm] = useState("a")
+  const { data, refetch, error } = useQuery<SearchUsersQuery>(SEARCH_USERS, {
     variables: { first_name: searchTerm },
   })
   const [addUsersToChatroom, { loading: loadingAddUsers }] =

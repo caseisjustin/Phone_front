@@ -33,6 +33,7 @@ function RoomList() {
       },
     }
   )
+  console.log("Chatrooms",data, "userID", userId)
   const isSmallDevice = useMediaQuery("(max-width: 768px)")
   const defaultTextStyles: React.CSSProperties = {
     textOverflow: isSmallDevice ? "unset" : "ellipsis",

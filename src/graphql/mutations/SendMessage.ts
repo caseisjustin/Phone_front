@@ -9,7 +9,6 @@ export const SEND_MESSAGE = gql`
       user {
         id
         first_name
-        phone_number
       }
     }
   }

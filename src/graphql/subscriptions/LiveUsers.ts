@@ -6,7 +6,6 @@ export const LIVE_USERS_SUBSCRIPTION = gql`
       id
       first_name
       profile_img
-      phone_number
     }
   }
 `

@@ -5,7 +5,6 @@ export const USER_STARTED_TYPING_MUTATION = gql`
     userStartedTypingMutation(chatroomId: $chatroomId) {
       id
       first_name
-      phone_number
     }
   }
 `

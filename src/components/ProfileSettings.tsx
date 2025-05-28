@@ -14,6 +14,9 @@ import {
   TextInput,
 } from "@mantine/core"
 import { IconEditCircle } from "@tabler/icons-react"
+import { useQuery } from "@apollo/client"
+import { GET_USER } from "../graphql/queries/GetUser"
+import { GetUserQuery } from "../gql/graphql"
 
 function ProfileSettings() {
   const isProfileSettingsModalOpen = useGeneralStore(
@@ -30,6 +33,13 @@ function ProfileSettings() {
   const imagePreview = imageFile ? URL.createObjectURL(imageFile) : null
 
   const fileInputRef = React.useRef<HTMLButtonElement>(null)
+  const setUser = useUserStore((state) => state.setUser)
+  const { data: stateUser} = useQuery<GetUserQuery>(GET_USER)
+  setUser({
+    id: stateUser?.getUser.id || undefined,
+    profile_img: stateUser?.getUser.profile_img,
+    first_name: stateUser?.getUser.first_name!,
+  })
 
   const form = useForm({
     initialValues: {

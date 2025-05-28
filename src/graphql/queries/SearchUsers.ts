@@ -5,7 +5,6 @@ export const SEARCH_USERS = gql`
     searchUsers(first_name: $first_name) {
       id
       first_name
-      phone_number
     }
   }
 `

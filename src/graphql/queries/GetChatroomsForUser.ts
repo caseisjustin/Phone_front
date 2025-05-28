@@ -1,8 +1,8 @@
 import { gql } from "@apollo/client"
 
 export const GET_CHATROOMS_FOR_USER = gql`
-  query GetChatroomsForUser($userId: Float!) {
-    getChatroomsForUser(userId: $userId) {
+  query GetChatroomsForUser {
+    getChatroomsForUser {
       id
       name
       messages {
@@ -18,7 +18,6 @@ export const GET_CHATROOMS_FOR_USER = gql`
         profile_img
         id
         first_name
-        phone_number
       }
     }
   }

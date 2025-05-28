@@ -242,15 +242,15 @@ function Chatwindow() {
       },
     }
   )
-
   const [messages, setMessages] = useState<Message[]>([])
   useEffect(() => {
     if (data?.getMessagesForChatroom) {
       setMessages(data.getMessagesForChatroom)
     }
   }, [data?.getMessagesForChatroom])
-
+  
   const handleSendMessage = async () => {
+    console.log("ChatroomID", chatroomId, messageContent,"selectedFile", selectedFile)
     await sendMessage({
       variables: {
         chatroomId: chatroomId,
@@ -260,9 +260,6 @@ function Chatwindow() {
       refetchQueries: [
         {
           query: GET_CHATROOMS_FOR_USER,
-          variables: {
-            userId: userId,
-          },
         },
       ],
     })

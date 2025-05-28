@@ -18,7 +18,7 @@ import {
   IconBrandWechat,
   IconLogin,
 } from "@tabler/icons-react"
-import { useMutation } from "@apollo/client"
+// import { useMutation } from "@apollo/client"
 
 const useStyles = createStyles((theme) => {
   return {
@@ -97,9 +97,9 @@ function Sidebar() {
   ))
   const userId = useUserStore((state) => state.id)
   const user = useUserStore((state) => state)
-  const setUser = useUserStore((state) => state.setUser)
+  // const setUser = useUserStore((state) => state.setUser)
 
-  const toggleLoginModal = useGeneralStore((state) => state.toggleLoginModal)
+  // const toggleLoginModal = useGeneralStore((state) => state.toggleLoginModal)
 
 
   return (

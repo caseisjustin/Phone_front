@@ -5,7 +5,6 @@ export const GET_USERS_OF_CHATROOM = gql`
     getUsersOfChatroom(chatroomId: $chatroomId) {
       id
       first_name
-      phone_number
       profile_img
     }
   }

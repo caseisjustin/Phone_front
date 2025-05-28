@@ -5,7 +5,9 @@ import RoomList from "../components/RoomList"
 import { Flex } from "@mantine/core"
 import AddChatroom from "../components/AddChatroom"
 import JoinRoomOrChatwindow from "../components/JoinRoomOrChatwindow"
+
 function Home() {
+
   return (
     <MainLayout>
       <div
@@ -15,11 +17,11 @@ function Home() {
       >
         <ProfileSettings />
         <Sidebar />
-          <AddChatroom />
-          <Flex direction={{ base: "column", md: "row" }}>
-            <RoomList />
-            <JoinRoomOrChatwindow />
-          </Flex>
+        <AddChatroom />
+        <Flex direction={{ base: "column", md: "row" }}>
+          <RoomList />
+          <JoinRoomOrChatwindow />
+        </Flex>
       </div>
     </MainLayout>
   )

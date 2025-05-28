@@ -10,7 +10,6 @@ export const NEW_MESSAGE_SUBSCRIPTION = gql`
       user {
         id
         first_name
-        phone_number
         profile_img
       }
     }

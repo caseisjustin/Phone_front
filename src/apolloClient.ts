@@ -19,14 +19,15 @@ loadDevMessages()
 
 async function refreshToken(client: ApolloClient<NormalizedCacheObject>) {
   try {
-    const { data } = await client.mutate({
-      mutation: gql`
-        mutation RefreshToken {
-          refreshToken
-        }
-      `,
-    })
-    const newAccessToken = data?.refreshToken
+    // const { data } = await client.mutate({
+    //   mutation: gql`
+    //     mutation RefreshToken {
+    //       refreshToken
+    //     }
+    //   `,
+    // })
+    // const newAccessToken = data?.refreshToken
+    const newAccessToken = localStorage.getItem("accessToken")
     if (!newAccessToken) {
       throw new Error("New access token not received.")
     }
@@ -39,12 +40,12 @@ let retryCount = 0
 const maxRetry = 3
 
 const wsLink = new WebSocketLink({
-  uri: `ws://10.10.1.91:3001/graphql`,
+  uri: `ws://localhost:3001/graphql`,
   options: {
     reconnect: true,
-    connectionParams: {
+    connectionParams: () => ({
       Authorization: `Bearer ${localStorage.getItem("accessToken")}`,
-    },
+    }),
   },
 })
 const errorLink = onError(({ graphQLErrors, operation, forward }) => {
@@ -73,17 +74,17 @@ const errorLink = onError(({ graphQLErrors, operation, forward }) => {
       useUserStore.setState({
         id: undefined,
         first_name: "",
-        phone_number: "",
       })
     }
   }
 })
 
 const uploadLink = createUploadLink({
-  uri: "http://10.10.1.91:3001/graphql",
+  uri: "http://localhost:3001/graphql",
   credentials: "include",
   headers: {
     "apollo-require-preflight": "true",
+    "authorization": `Bearer ${localStorage.getItem("accessToken")}`,
   },
 })
 const link = split(
@@ -99,11 +100,7 @@ const link = split(
   ApolloLink.from([errorLink, uploadLink])
 )
 export const client = new ApolloClient({
-  uri: "http://10.10.1.91:3001/graphql",
   cache: new InMemoryCache({}),
   credentials: "include",
-  headers: {
-    "Content-Type": "application/json",
-  },
   link: link,
 })

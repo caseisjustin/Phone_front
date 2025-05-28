@@ -10,7 +10,6 @@ export const GET_MESSAGES_FOR_CHATROOM = gql`
       user {
         id
         first_name
-        phone_number
         profile_img
       }
       chatroom {
@@ -19,7 +18,6 @@ export const GET_MESSAGES_FOR_CHATROOM = gql`
         users {
           id
           first_name
-          phone_number
           profile_img
         }
       }
